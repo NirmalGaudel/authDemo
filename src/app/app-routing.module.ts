@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { LoginComponent } from './components/authentication/login/login.component';
-import { SignupComponent } from './components/authentication/signup/signup.component';
-import { DashboardComponent } from './components/main-content/dashboard/dashboard.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { SignupComponent } from './modules/auth/signup/signup.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AuthComponent } from './modules/auth/auth.component';
+import { AdminPanelComponent } from './modules/admin-panel/admin-panel.component';
+import { DashboardComponent } from './modules/admin-panel/components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  {
+    path: '',
+    component: AdminPanelComponent,
+    canActivate: [AuthGuard],
+    children: [{ path: '', component: DashboardComponent }],
+  },
   {
     path: 'auth',
-    component: AuthenticationComponent,
+    component: AuthComponent,
     children: [
       { path: '', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
