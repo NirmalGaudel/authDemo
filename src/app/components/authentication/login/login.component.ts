@@ -6,6 +6,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { InvalidErrorStateMatcher } from '../errorStateMatcher';
 
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _authService: AuthService,
     private _fb: FormBuilder,
-    private _route: Router
+    private _route: Router,
+    private _alertService:AlertService
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
         this._route.navigate(['']);
       })
       .catch((e) => {
-        alert('Invalid Username');
+        this._alertService.alert('Invalid Username or Password',"Okay");
       });
   }
 

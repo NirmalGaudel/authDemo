@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,14 +16,18 @@ export class DashboardComponent implements OnInit {
     lastname: localStorage.getItem('lastname') || '',
     password: localStorage.getItem('password') || '',
   };
-  constructor(private _route: Router, private _authService: AuthService) {}
+  constructor(
+    private _route: Router,
+    private _authService: AuthService,
+    private _alertService: AlertService
+  ) {}
 
   ngOnInit(): void {}
 
   logOut() {
-    if(this._authService.logout())  this._route.navigate(["auth"]);
-    else{
-      alert("Logout not successful");
+    if (this._authService.logout()) this._route.navigate(['auth']);
+    else {
+      this._alertService.alert('Logout not successful');
     }
   }
 
@@ -33,4 +38,6 @@ export class DashboardComponent implements OnInit {
   getbykey(key: string) {
     return Object.values(this.user)[Object.keys(this.user).indexOf(key)];
   }
+
+  
 }
