@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title> SignUp </mat-card-title>
+  <mat-card-subtitle>Please Enter Your Details</mat-card-subtitle>
+  <mat-card-content>    
+      <form >   
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Enter username">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>FirstName</mat-label>
+            <input matInput type="text" placeholder="Enter Firstname">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Lastname</mat-label>
+            <input matInput type="text" placeholder="Enter LastName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" placeholder="Enter Password">
+        </mat-form-field>
+      </form>
+      <mat-card-actions>
+          <button type="button" mat-stroked-button routerLink="/auth"> Go to Login </button>
+          <button mat-flat-button color="primary">Sign Up</button>
+      </mat-card-actions>
+  </mat-card-content>
+</mat-card>

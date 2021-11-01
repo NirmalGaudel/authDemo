@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-subtitle>Please Enter Your Details</mat-card-subtitle>
+  <mat-card-content>
+    <form [formGroup]="loginFormGroup" (ngSubmit)="submitForm()">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput formControlName="username" [errorStateMatcher]="matcher"
+          placeholder="Enter Username" />
+        <mat-error *ngIf="username.hasError('minLength') && !username.hasError('required')">
+          The Username is invalid
+        </mat-error>
+        <mat-error *ngIf="username.hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="username.hasError('minlength')">
+          Username must have <strong> 2 </strong> Characters
+        </mat-error>
+        <mat-error *ngIf="username.hasError('maxlength')">
+          Username must have less than <strong> 20 </strong> Characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" [errorStateMatcher]="matcher"
+          placeholder="Enter Password" />
+        <mat-error *ngIf="loginFormGroup.controls.password.invalid">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button type="button" routerLink="/auth/signup">
+          Create an Account
+        </button>
+        <button mat-flat-button color="primary">Login</button>
+      </mat-card-actions>
+      
+    </form>
+  </mat-card-content>
+</mat-card>

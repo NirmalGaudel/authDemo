@@ -1,0 +1,27 @@
+:host{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card{
+    width: 100%;
+    min-width: 200px;
+    max-width: 300px;
+}
+mat-card-content{
+    div{
+        display: flex;
+        gap: 1rem;
+        .label{
+            min-width: 100px;
+
+        }
+    }
+}
+
+button{
+    width: 100%;
+}

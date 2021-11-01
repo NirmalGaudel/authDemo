@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Dashboard</mat-card-title>
+  <mat-card-subtitle>Hello <strong>{{ user.username }}</strong> </mat-card-subtitle>
+  <mat-card-content>
+    <div *ngFor="let key of userKeys">
+      <span class="label">{{ key }}</span> : <strong class="value">{{ getbykey(key) }}</strong>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="warn" (click) = "logOut()" >LOGOUT</button>
+  </mat-card-actions>
+</mat-card>
