@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../modules/auth/user';
+import { AlertService } from './alert.service';
 
 const users: User[] = [
   {
@@ -15,7 +17,7 @@ const users: User[] = [
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private _router: Router, private _alertService: AlertService) {}
 
   checkUsername(username: string) {
     //demo for backend
@@ -26,7 +28,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     // TODO : return HttpResponse
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
       const matches = users.filter(
         (user) => user.username === username && user.password === password
       );
@@ -39,11 +41,12 @@ export class AuthService {
       localStorage.setItem('username', user.username + '');
       localStorage.setItem('password', user.password + '');
       return resolve(user);
-    })
+    });
   }
 
   logout() {
-    localStorage.clear();
-    return true;
+    this._alertService.alert("logout");
+    // localStorage.clear();
+    // this._router.navigate(['auth']);
   }
 }

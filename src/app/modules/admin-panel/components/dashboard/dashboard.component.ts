@@ -25,10 +25,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {}
 
   logOut() {
-    if (this._authService.logout()) this._route.navigate(['auth']);
-    else {
-      this._alertService.alert('Logout not successful');
-    }
+    this._authService.logout();
   }
 
   get userKeys() {
@@ -38,6 +35,4 @@ export class DashboardComponent implements OnInit {
   getbykey(key: string) {
     return Object.values(this.user)[Object.keys(this.user).indexOf(key)];
   }
-
-  
 }

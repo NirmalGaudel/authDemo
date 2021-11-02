@@ -7,13 +7,20 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthComponent } from './modules/auth/auth.component';
 import { AdminPanelComponent } from './modules/admin-panel/admin-panel.component';
 import { DashboardComponent } from './modules/admin-panel/components/dashboard/dashboard.component';
+import { UsersComponent } from './modules/admin-panel/components/users/users.component';
+import { MaintenanceComponent } from './modules/admin-panel/components/maintenance/maintenance.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminPanelComponent,
     canActivate: [AuthGuard],
-    children: [{ path: '', component: DashboardComponent }],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'maintenance', component: MaintenanceComponent },
+    ],
   },
   {
     path: 'auth',
