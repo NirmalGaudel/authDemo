@@ -45,8 +45,8 @@ export class AuthService {
   }
 
   logout() {
-    this._alertService.alert("logout");
-    // localStorage.clear();
-    // this._router.navigate(['auth']);
+    // this._alertService.alert("logout");
+    localStorage.clear();
+    this._router.navigate(['auth']);
   }
 }
