@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private _authService: AuthService,
     private _fb: FormBuilder,
     private _route: Router,
-    private _alertService:AlertService
+    private _alertService:AlertService,
   ) {}
 
   ngOnInit(): void {

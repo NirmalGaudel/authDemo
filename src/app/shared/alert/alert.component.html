@@ -1,2 +1,16 @@
-<h5>{{message | titlecase}}</h5>
-<button mat-raised-button (click)="onConfirmClick()">{{cancelButtonText}}</button>
+<h3>{{ message | titlecase }}</h3>
+
+<div class="buttons">
+    <button mat-raised-button [mat-dialog-close]="false">
+        {{ cancelButtonText }}
+      </button>
+      <div class="spacer"></div>
+      <button
+        *ngIf="showConfirm"
+        mat-raised-button
+        [mat-dialog-close]="true"
+        color="warn"
+      >
+        {{ confirmButtonText }}
+      </button>
+</div>

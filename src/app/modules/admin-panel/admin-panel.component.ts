@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -8,13 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-panel.component.scss'],
 })
 export class AdminPanelComponent implements OnInit {
-  
-
   isMatDrawerOpen = false;
 
-  constructor(private _authService: AuthService, private _route: Router) {}
+  constructor( private _route: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   logOut() {
     localStorage.clear();
@@ -24,5 +25,4 @@ export class AdminPanelComponent implements OnInit {
   toggleDrawer() {
     this.isMatDrawerOpen = !this.isMatDrawerOpen;
   }
-
 }

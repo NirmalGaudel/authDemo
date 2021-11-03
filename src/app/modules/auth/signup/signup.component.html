@@ -1,28 +1,156 @@
 <mat-card>
   <mat-card-title> SignUp </mat-card-title>
   <mat-card-subtitle>Please Enter Your Details</mat-card-subtitle>
-  <mat-card-content>    
-      <form >   
-        <mat-form-field appearance="outline">
-            <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Enter username">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>FirstName</mat-label>
-            <input matInput type="text" placeholder="Enter Firstname">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Lastname</mat-label>
-            <input matInput type="text" placeholder="Enter LastName">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="text" placeholder="Enter Password">
-        </mat-form-field>
-      </form>
-      <mat-card-actions>
-          <button type="button" mat-stroked-button routerLink="/auth"> Go to Login </button>
-          <button mat-flat-button color="primary">Sign Up</button>
-      </mat-card-actions>
+  <mat-card-content>
+    <form [formGroup]="signupFormGroup">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter username"
+          formControlName="username"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error
+          *ngIf="
+            signupFormGroup.controls.username.hasError('minLength') &&
+            !signupFormGroup.controls.username.hasError('required')
+          "
+        >
+          The Username is invalid
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.username.hasError('required')"
+        >
+          Username is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.username.hasError('minlength')"
+        >
+          Username must have <strong> 2 </strong> Characters
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.username.hasError('maxlength')"
+        >
+          Username must have less than <strong> 20 </strong> Characters
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>FirstName</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter Firstname"
+          formControlName="firstname"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error
+          *ngIf="
+            signupFormGroup.controls.firstname.hasError('minLength') &&
+            !signupFormGroup.controls.firstname.hasError('required')
+          "
+        >
+          The Firstname is invalid
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.firstname.hasError('required')"
+        >
+          Firstname is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.firstname.hasError('minlength')"
+        >
+          Firstname must have <strong> 2 </strong> Characters
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.firstname.hasError('maxlength')"
+        >
+          Firstname must have less than <strong> 20 </strong> Characters
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Lastname</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter LastName"
+          formControlName="lastname"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error
+          *ngIf="
+            signupFormGroup.controls.lastname.hasError('minLength') &&
+            !signupFormGroup.controls.lastname.hasError('required')
+          "
+        >
+          The Lastname is invalid
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.lastname.hasError('required')"
+        >
+          Lastname is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.lastname.hasError('minlength')"
+        >
+          Lastname must have <strong> 2 </strong> Characters
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.lastname.hasError('maxlength')"
+        >
+          Lastname must have less than <strong> 20 </strong> Characters
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Enter Password"
+          formControlName="password"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error
+          *ngIf="
+            signupFormGroup.controls.password.hasError('minLength') &&
+            !signupFormGroup.controls.password.hasError('required')
+          "
+        >
+          The Password is invalid
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.password.hasError('required')"
+        >
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.password.hasError('minlength')"
+        >
+          Password must have <strong> 8 </strong> Characters
+        </mat-error>
+        <mat-error
+          *ngIf="signupFormGroup.controls.password.hasError('maxlength')"
+        >
+          Password must have less than <strong> 20 </strong> Characters
+        </mat-error>
+        <mat-error
+          *ngIf="
+            signupFormGroup.controls.password.hasError('pattern') &&
+            !signupFormGroup.controls.password.hasError('minlength')
+          "
+        >
+          Password must have each of lowercase, uppercase and number
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <mat-card-actions>
+      <button type="button" mat-stroked-button routerLink="/auth">
+        Go to Login
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit()">
+        Sign Up
+      </button>
+    </mat-card-actions>
   </mat-card-content>
 </mat-card>

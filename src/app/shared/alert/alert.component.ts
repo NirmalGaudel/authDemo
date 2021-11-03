@@ -8,22 +8,29 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AlertComponent implements OnInit {
   message: string = '';
   cancelButtonText = 'Cancel';
+  confirmButtonText = 'Okay';
+  showConfirm = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dialogRef: MatDialogRef<AlertComponent>
   ) {
     if (data) {
       this.message = data.message || this.message;
+      this.showConfirm = data.showConfirm || this.showConfirm;
       if (data.buttonText) {
         this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
+      }
+      if (data.buttonText) {
+        this.confirmButtonText =
+          data.buttonText.confirm || this.confirmButtonText;
       }
     }
     this.dialogRef.updateSize('300vw', '300vw');
   }
 
-  onConfirmClick(): void {
-    this.dialogRef.close(true);
-  }
+  // onConfirmClick(): void {
+  //   this.dialogRef.close(false);
+  // }
 
   ngOnInit() {}
 }
