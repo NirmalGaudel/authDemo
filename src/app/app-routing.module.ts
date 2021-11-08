@@ -14,12 +14,13 @@ const routes: Routes = [
   {
     path: '',
     component: AdminPanelComponent,
+    data:{breadcrum:"Home"},
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'maintenance', component: MaintenanceComponent },
+      { path: 'dashboard',data:{breadcrum:"Dashboard"}, component: DashboardComponent },
+      { path: 'users',data:{breadcrum:"Users"}, component: UsersComponent },
+      { path: 'maintenance',data:{breadcrum:"Maintenance"}, component: MaintenanceComponent },
     ],
   },
   {

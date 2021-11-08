@@ -1,7 +1,5 @@
-import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
 import { User } from '../modules/auth/user';
 import { AlertService } from './alert.service';
 import { HttpService } from './http.service';
@@ -37,7 +35,7 @@ export class AuthService {
     // TODO : return HttpResponse
     return new Promise((resolve, reject) => {
       this._http
-        .post('http://localhost:3000/auth/login', { username, password })
+        .post('/auth/login', { username, password })
         .toPromise()
         .then((res: any) => {
           console.log(res.token);
@@ -72,7 +70,7 @@ export class AuthService {
       const { username, firstname, lastname, password } = payload;
       const body = { username, firstname, lastname, password };
       this._http
-        .post('http://localhost:3000/auth/signup', body)
+        .post('/auth/signup', body)
         .toPromise()
         .then((res: any) => {
           console.log(res);
@@ -85,7 +83,6 @@ export class AuthService {
           resolve(res);
         })
         .catch((err) => {
-          
           console.log(err);
           reject(err.error);
         });

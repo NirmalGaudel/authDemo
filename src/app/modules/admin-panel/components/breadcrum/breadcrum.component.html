@@ -1,0 +1,5 @@
+<div class="breadcrum">
+  <span *ngFor="let menuitem of menuItems">
+    <mat-link routerLink="{{ menuitem.url }}">{{ menuitem.label }}</mat-link> /
+  </span>
+</div>

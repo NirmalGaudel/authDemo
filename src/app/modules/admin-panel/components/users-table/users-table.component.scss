@@ -1,0 +1,36 @@
+table {
+  max-width: 80%;
+  width: 100%;
+  margin: 10px 10%;
+}
+.mat-row:hover {
+  background: whitesmoke;
+}
+
+.mat-column-actions{
+    text-align: center;
+}
+
+// .mat-row td:last-child {
+//   max-width: 70px;
+// }
+
+[mat-button] {
+  padding: 0 5px;
+  margin: 5px;
+  color: white;
+  background-color: green;
+  opacity: 70%;
+}
+
+[mat-button]:hover {
+  background: green;
+  opacity: 100%;
+}
+
+tr [mat-button]:nth-child(2) {
+  background-color: blue;
+}
+tr [mat-button]:nth-child(3) {
+  background-color: red;
+}

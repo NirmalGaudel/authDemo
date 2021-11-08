@@ -1,0 +1,26 @@
+.breadcrum{
+    user-select: none;
+    height: 50px;
+    background-color: #fff;
+    line-height: 50px;
+    font-size: larger;
+    padding-inline: 30px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+mat-link {
+    cursor: pointer;
+    text-decoration-color: transparent;
+    transition: text-decoration 1s ease;
+    -webkit-transition: text-decoration 1s ease;
+    -moz-transition: text-decoration 1s ease;
+    -ms-transition: text-decoration 1s ease;
+    -o-transition: text-decoration 1s ease;
+    -moz-text-decoration-color: transparent;
+}
+
+mat-link:hover{
+    text-decoration: underline #aaaa 2px solid;
+    text-underline-offset: 4px;
+}

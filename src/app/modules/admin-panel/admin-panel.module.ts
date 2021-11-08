@@ -10,9 +10,11 @@ import { SideNavbarComponent } from './components/side-navbar/side-navbar.compon
 import { UsersComponent } from './components/users/users.component';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BreadcrumComponent } from './components/breadcrum/breadcrum.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 
 @NgModule({
-  declarations: [AdminPanelComponent, DashboardComponent, HeaderComponent, SideNavbarComponent, UsersComponent, MaintenanceComponent],
+  declarations: [AdminPanelComponent, DashboardComponent, HeaderComponent, SideNavbarComponent, UsersComponent, MaintenanceComponent, BreadcrumComponent, UsersTableComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
