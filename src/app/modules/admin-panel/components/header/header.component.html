@@ -3,11 +3,8 @@
 </button>
 <h2>Demo Project</h2>
 <div class="separator"></div>
-<button mat-mini-fab color="primary" class="profile-picture">
-  <!-- <img
-    src="https://lh3.googleusercontent.com/ogw/ADea4I53i6R-F18RTb_rU9nlnYZaQ9cbTfks5oIYVE1A=s32-c-mo"
-    alt="userImage"
-  /> -->
+<button mat-mini-fab color="primary" class="profile-picture" (click)="avatarClicked()">
+  
   <mat-icon>person</mat-icon>
 </button>
 <button mat-icon-button (click)="logOut()">

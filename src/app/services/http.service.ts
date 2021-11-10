@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,16 +8,30 @@ import { environment } from 'src/environments/environment';
 export class HttpService {
   constructor(private httpClient: HttpClient) {}
 
-  public get(url: string, options: any = {}) {
-    return this.httpClient.get(environment.apiHost + url, {
-      headers: options.headers || {
-        authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
+  optionsGenerator(headers?: any): any {
+    const token = localStorage.getItem('token');
+    const options: any = {
       observe: 'body',
-    });
+      headers: { 'Content-type': headers?.contentType || 'application/json' },
+    };
+    if (headers?.authorization)
+      options.headers.authorization = headers.authorization;
+    else if (token) options.headers.authorization = `Bearer ${token}`;
+    return options;
   }
 
-  public post(url: string, body: any, options: any = {}) {
+  public get(url: string, headers?: any) {
+    const options = this.optionsGenerator(headers);
+    return this.httpClient.get(environment.apiHost + url, options);
+  }
+
+  public post(url: string, body: any, headers?: any) {
+    const options = this.optionsGenerator(headers);
     return this.httpClient.post(environment.apiHost + url, body, options);
+  }
+
+  public delete(url: string, headers?: any) {
+    const options = this.optionsGenerator(headers);
+    return this.httpClient.delete(environment.apiHost + url, options);
   }
 }

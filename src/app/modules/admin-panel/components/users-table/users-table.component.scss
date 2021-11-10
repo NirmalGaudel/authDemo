@@ -1,36 +1,21 @@
-table {
-  max-width: 80%;
+[mat-table]{
   width: 100%;
-  margin: 10px 10%;
 }
+
 .mat-row:hover {
   background: whitesmoke;
 }
 
-.mat-column-actions{
-    text-align: center;
+.mat-column-actions {
+  text-align: center;
 }
 
-// .mat-row td:last-child {
-//   max-width: 70px;
-// }
-
-[mat-button] {
-  padding: 0 5px;
+[mat-icon-button] {
   margin: 5px;
   color: white;
-  background-color: green;
+  background-color: red;
   opacity: 70%;
 }
-
-[mat-button]:hover {
-  background: green;
+[mat-icon-button]:hover{
   opacity: 100%;
-}
-
-tr [mat-button]:nth-child(2) {
-  background-color: blue;
-}
-tr [mat-button]:nth-child(3) {
-  background-color: red;
 }

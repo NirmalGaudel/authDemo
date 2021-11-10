@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
         this._route.navigate(['']);
       })
       .catch((e) => {
-        this._alertService.alert('Invalid Username or Password',"Okay");
+        console.log(e)
+        this._alertService.alert('Invalid Username or Password',"Retry");
       });
   }
 

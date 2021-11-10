@@ -1,5 +1,9 @@
 <div class="breadcrum">
-  <span *ngFor="let menuitem of menuItems">
-    <mat-link routerLink="{{ menuitem.url }}">{{ menuitem.label }}</mat-link> /
-  </span>
+    <span *ngFor="let item of bcService.bcData ; let last = last">
+        <mat-link routerLink="{{ item.url }}">
+            {{ item.label | titlecase }}
+        </mat-link>
+        <span *ngIf="!last"> / </span>
+    </span>
+
 </div>

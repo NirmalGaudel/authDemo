@@ -1,0 +1,28 @@
+<!-- profile page for UserId : {{ userId }}
+
+<p> {{userDetails | json}}</p> -->
+
+<mat-card-title>Profile</mat-card-title>
+<ng-container *ngIf="userDetails">
+    <mat-card-subtitle>{{
+        userDetails.firstname + " " + userDetails.lastname
+        }}</mat-card-subtitle>
+    <mat-card-content>
+        <img mat-card-xl-image src="https://picsum.photos/200" alt="Imge" />
+        <div class="profile-detail">
+            <div class="profile-detail-label">
+                <strong>ID</strong> <span>{{ userDetails.id }}</span>
+            </div>
+            <div class="profile-detail-label">
+                <strong>Username</strong> <span>{{ userDetails.username }}</span>
+            </div>
+            <div class="profile-detail-label">
+                <strong>Firstname</strong> <span>{{ userDetails.firstname }}</span>
+            </div>
+            <div class="profile-detail-label">
+                <strong>Lastname</strong> <span>{{ userDetails.lastname }}</span>
+            </div>
+        </div>
+    </mat-card-content>
+    
+</ng-container>

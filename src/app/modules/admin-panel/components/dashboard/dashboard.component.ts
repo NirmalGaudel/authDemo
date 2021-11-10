@@ -9,20 +9,26 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  user = {
-    id: Number.parseInt(localStorage.getItem('id') || '') || -1,
-    username: localStorage.getItem('username') || '',
-    firstname: localStorage.getItem('firstname') || '',
-    lastname: localStorage.getItem('lastname') || '',
-    password: localStorage.getItem('password') || '',
-  };
+  user: any;
   constructor(
     private _route: Router,
     private _authService: AuthService,
     private _alertService: AlertService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = {
+      id: Number.parseInt(localStorage.getItem('id') || ''),
+      username: localStorage.getItem('username') || '',
+      firstname: localStorage.getItem('firstname') || '',
+      lastname: localStorage.getItem('lastname') || '',
+      password: localStorage.getItem('password') || '',
+    };
+    if(!this.user.id) {
+      localStorage.clear();
+      this._route.navigate(['/auth'])
+    }
+  }
 
   logOut() {
     this._authService.logout();

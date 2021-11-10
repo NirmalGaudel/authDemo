@@ -11,6 +11,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AlertComponent } from './shared/alert/alert.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BreadcrumbService } from './services/breadcrumb.service';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, AlertComponent],

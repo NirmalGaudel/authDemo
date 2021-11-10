@@ -1,0 +1,41 @@
+mat-card {
+  margin: 20px;
+}
+
+mat-card-content {
+  display: flex;
+  gap: 2rem;
+}
+
+img {
+  border: 2px solid #8888;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.profile-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-detail-label {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 100px auto;
+
+  span {
+    font-weight: 500;
+    font-size: larger;
+  }
+
+  span::before {
+    content: ":";
+    margin-right: 50px;
+  }
+}

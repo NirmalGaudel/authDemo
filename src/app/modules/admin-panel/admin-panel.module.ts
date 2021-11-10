@@ -12,9 +12,10 @@ import { MaintenanceComponent } from './components/maintenance/maintenance.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumComponent } from './components/breadcrum/breadcrum.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [AdminPanelComponent, DashboardComponent, HeaderComponent, SideNavbarComponent, UsersComponent, MaintenanceComponent, BreadcrumComponent, UsersTableComponent],
+  declarations: [AdminPanelComponent, DashboardComponent, HeaderComponent, SideNavbarComponent, UsersComponent, MaintenanceComponent, BreadcrumComponent, UsersTableComponent, ProfileComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
@@ -23,6 +24,6 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
     ReactiveFormsModule,
     RouterModule,
   ],
-  exports: [AdminPanelComponent, DashboardComponent],
+  exports: [],
 })
 export class AdminPanelModule {}

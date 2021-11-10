@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleDrawer = new EventEmitter<null>();
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -18,5 +19,9 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this._authService.logout();
+  }
+
+  avatarClicked() {
+    this.router.navigate(['users/' + localStorage.getItem('id')]);
   }
 }

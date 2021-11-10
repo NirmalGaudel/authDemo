@@ -9,19 +9,49 @@ import { AdminPanelComponent } from './modules/admin-panel/admin-panel.component
 import { DashboardComponent } from './modules/admin-panel/components/dashboard/dashboard.component';
 import { UsersComponent } from './modules/admin-panel/components/users/users.component';
 import { MaintenanceComponent } from './modules/admin-panel/components/maintenance/maintenance.component';
+import { ProfileComponent } from './modules/admin-panel/components/profile/profile.component';
+import { UsersTableComponent } from './modules/admin-panel/components/users-table/users-table.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminPanelComponent,
-    data:{breadcrum:"Home"},
+    data: { breadcrum: 'home' },
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard',data:{breadcrum:"Dashboard"}, component: DashboardComponent },
-      { path: 'users',data:{breadcrum:"Users"}, component: UsersComponent },
-      { path: 'maintenance',data:{breadcrum:"Maintenance"}, component: MaintenanceComponent },
+      {
+        path: 'dashboard',
+        data: { breadcrum: 'dashboard' },
+        component: DashboardComponent,
+      },
+      {
+        path: 'users',
+        data: { breadcrum: 'users' },
+        component: UsersComponent,
+        children: [
+          {
+            path: '',
+            data: { breadcrum: '' },
+            component: UsersTableComponent,
+          },
+          {
+            path: ':id',
+            component: ProfileComponent,
+            data: { breadcrum: '' },
+          },
+        ],
+      },
+      {
+        path: 'maintenance',
+        data: { breadcrum: 'maintenance' },
+        component: MaintenanceComponent,
+      },
     ],
+  },
+  {
+    path: 'home',
+    redirectTo: '',
   },
   {
     path: 'auth',

@@ -38,7 +38,7 @@ export class AuthService {
         .post('/auth/login', { username, password })
         .toPromise()
         .then((res: any) => {
-          console.log(res.token);
+          
           localStorage.clear();
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user.id);
@@ -47,8 +47,7 @@ export class AuthService {
           localStorage.setItem('lastname', res.user.lastname);
           resolve(res);
         })
-        .catch((err) => console.log('ERROR Occured', err))
-        .finally(() => reject());
+        .catch((err) => reject(err));
     });
   }
 
