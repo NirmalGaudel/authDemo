@@ -8,7 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatTableModule} from "@angular/material/table"
+import {MatTableModule} from "@angular/material/table";
+import {MatDividerModule} from "@angular/material/divider"
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import {MatTableModule} from "@angular/material/table"
     MatButtonModule,
     MatDialogModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
+    MatDividerModule
   ],
   exports: [
     MatCommonModule,
@@ -33,7 +35,8 @@ import {MatTableModule} from "@angular/material/table"
     MatButtonModule,
     MatDialogModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
+    MatDividerModule
   ],
 })
 export class MaterialUIModule {}

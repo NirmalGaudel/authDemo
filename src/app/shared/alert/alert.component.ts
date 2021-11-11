@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./alert.component.scss'],
 })
 export class AlertComponent implements OnInit {
-  message: string = '';
+  message: string[] = [''];
   cancelButtonText = 'Cancel';
   confirmButtonText = 'Okay';
   showConfirm = false;
@@ -15,7 +15,10 @@ export class AlertComponent implements OnInit {
     private dialogRef: MatDialogRef<AlertComponent>
   ) {
     if (data) {
-      this.message = data.message || this.message;
+      if (data.message) {
+        if (!Array.isArray(data.message)) this.message = [data.message];
+        else this.message = data.message;
+      }
       this.showConfirm = data.showConfirm || this.showConfirm;
       if (data.buttonText) {
         this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;

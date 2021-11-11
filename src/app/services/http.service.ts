@@ -30,6 +30,11 @@ export class HttpService {
     return this.httpClient.post(environment.apiHost + url, body, options);
   }
 
+  public put(url: string, body: any, headers?: any) {
+    const options = this.optionsGenerator(headers);
+    return this.httpClient.put(environment.apiHost + url, body, options);
+  }
+
   public delete(url: string, headers?: any) {
     const options = this.optionsGenerator(headers);
     return this.httpClient.delete(environment.apiHost + url, options);

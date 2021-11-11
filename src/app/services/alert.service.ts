@@ -8,7 +8,7 @@ import { AlertComponent } from '../shared/alert/alert.component';
 export class AlertService {
   constructor(private dialog: MatDialog) {}
 
-  alert(message = '', cancelText = 'Cancel') {
+  alert(message:string|string[] = '', cancelText = 'Cancel') {
     const dialogRef = this.dialog.open(AlertComponent, {
       data: {
         message: message,

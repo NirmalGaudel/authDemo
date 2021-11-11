@@ -16,7 +16,7 @@ export class UsersTableComponent implements OnInit {
     'lastname',
     'actions',
   ];
-  dataSource = [];
+  dataSource: any[] = [];
   constructor(
     private _http: HttpService,
     private _router: Router,
@@ -42,9 +42,8 @@ export class UsersTableComponent implements OnInit {
         );
         if (err.status === 401) {
           localStorage.clear();
-          this._router.navigate([''])
-        };
-        
+          this._router.navigate(['']);
+        }
       });
   }
 
@@ -72,7 +71,7 @@ export class UsersTableComponent implements OnInit {
           .delete(`/users/${id}`)
           .toPromise()
           .then((data) => {
-            this._alertService.alert('User Deleted',"okay");
+            this._alertService.alert('User Deleted', 'okay');
             this.getUsers();
           })
           .catch((err) => this._alertService.alert(err.error.message));

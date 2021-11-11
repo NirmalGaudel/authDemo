@@ -1,28 +1,147 @@
-<!-- profile page for UserId : {{ userId }}
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title> Profile </mat-card-title>
+    <div class="title-actions" *ngIf="showEdit">
+      <button
+        mat-flat-button
+        [color]="isEditable ? 'warn' : 'primary'"
+        (click)="toggleEdit()"
+      >
+        <ng-container *ngIf="!isEditable">
+          <mat-icon>edit</mat-icon> Edit
+        </ng-container>
+        <ng-container *ngIf="isEditable">
+          <mat-icon>undo</mat-icon> Reset
+        </ng-container>
+      </button>
+    </div>
+  </mat-card-title-group>
 
-<p> {{userDetails | json}}</p> -->
+  <ng-container *ngIf="userDetails">
+    <mat-card-subtitle>{{ fullname }}</mat-card-subtitle>
 
-<mat-card-title>Profile</mat-card-title>
-<ng-container *ngIf="userDetails">
-    <mat-card-subtitle>{{
-        userDetails.firstname + " " + userDetails.lastname
-        }}</mat-card-subtitle>
     <mat-card-content>
-        <img mat-card-xl-image src="https://picsum.photos/200" alt="Imge" />
-        <div class="profile-detail">
-            <div class="profile-detail-label">
-                <strong>ID</strong> <span>{{ userDetails.id }}</span>
-            </div>
-            <div class="profile-detail-label">
-                <strong>Username</strong> <span>{{ userDetails.username }}</span>
-            </div>
-            <div class="profile-detail-label">
-                <strong>Firstname</strong> <span>{{ userDetails.firstname }}</span>
-            </div>
-            <div class="profile-detail-label">
-                <strong>Lastname</strong> <span>{{ userDetails.lastname }}</span>
-            </div>
+      <div class="profile-image">
+        <img src="https://picsum.photos/200" alt="Imge" />
+      </div>
+      <form
+        class="profile-detail"
+        [formGroup]="editForm"
+        (ngSubmit)="submitForm()"
+      >
+        <div class="profile-detail-row">
+          <label for="profile-detail-id">Id</label>
+          <span>:</span>
+          <input
+            type="text"
+            name="id"
+            id="profile-detail-id"
+            [value]="userDetails.id"
+            formControlName="id"
+          />
         </div>
+        <div class="profile-detail-row">
+          <label for="profile-detail-username">Username</label>
+          <span>:</span>
+          <input
+            [ngClass]="{ error: editForm.controls.username.invalid }"
+            type="text"
+            id="profile-detail-username"
+            formControlName="username"
+          />
+          <div *ngIf="editForm.controls.username.invalid">
+            <ng-container
+              *ngIf="editForm.controls.username.hasError('required')"
+            >
+              username is required
+            </ng-container>
+            <ng-container
+              *ngIf="editForm.controls.username.hasError('minlength')"
+            >
+              at least
+              {{ editForm.controls.username.errors?.minlength?.requiredLength }}
+              characters required
+            </ng-container>
+            <ng-container
+              *ngIf="editForm.controls.username.hasError('maxlength')"
+            >
+              maximum of
+              {{ editForm.controls.username.errors?.maxlength?.requiredLength }}
+              characters supported
+            </ng-container>
+          </div>
+        </div>
+        <div class="profile-detail-row">
+          <label for="profile-detail-firstname">Firstname</label>
+          <span>:</span>
+          <input
+            type="text"
+            id="profile-detail-firstname"
+            formControlName="firstname"
+          />
+          <div *ngIf="editForm.controls.firstname.invalid">
+            <ng-container
+              *ngIf="editForm.controls.firstname.hasError('required')"
+            >
+              firstname is required
+            </ng-container>
+            <ng-container
+              *ngIf="editForm.controls.firstname.hasError('minlength')"
+            >
+              at least
+              {{ editForm.controls.firstname.errors?.minlength?.requiredLength }}
+              characters required
+            </ng-container>
+            <ng-container
+              *ngIf="editForm.controls.firstname.hasError('maxlength')"
+            >
+              maximum of
+              {{ editForm.controls.firstname.errors?.maxlength?.requiredLength }}
+              characters supported
+            </ng-container>
+          </div>
+        </div>
+        <div class="profile-detail-row">
+          <label for="profile-detail-lastname">Lastname</label>
+          <span>:</span>
+          <input
+            type="text"
+            id="profile-detail-lastname"
+            formControlName="lastname"
+          />
+          <div *ngIf="editForm.controls.lastname.invalid">
+            <ng-container
+              *ngIf="editForm.controls.lastname.hasError('required')"
+            >
+              lastname is required
+            </ng-container>
+            <ng-container
+              *ngIf="editForm.controls.lastname.hasError('minlength')"
+            >
+              at least
+              {{ editForm.controls.lastname.errors?.minlength?.requiredLength }}
+              characters required
+            </ng-container>
+            <ng-container
+              *ngIf="editForm.controls.lastname.hasError('maxlength')"
+            >
+              maximum of
+              {{ editForm.controls.lastname.errors?.maxlength?.requiredLength }}
+              characters supported
+            </ng-container>
+          </div>
+        </div>
+        <button
+          type="submit"
+          mat-stroked-button
+          color="primary"
+          [disabled]="!isEditable"
+        >
+          Submit
+        </button>
+      </form>
     </mat-card-content>
-    
-</ng-container>
+
+    <mat-card-footer> </mat-card-footer>
+  </ng-container>
+</mat-card>

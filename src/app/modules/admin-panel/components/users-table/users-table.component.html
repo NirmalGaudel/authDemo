@@ -1,33 +1,37 @@
-<div mat-card-title>Users</div>
-<div mat-card-image>
-<table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let element" (click)="viewUser(element.id)">{{ element.id }}</td>
-  </ng-container>
-  <ng-container matColumnDef="username">
-    <th mat-header-cell *matHeaderCellDef>Username</th>
-    <td mat-cell *matCellDef="let element" (click)="viewUser(element.id)">{{ element.username }}</td>
-  </ng-container>
-  <ng-container matColumnDef="firstname">
-    <th mat-header-cell *matHeaderCellDef>Firstname</th>
-    <td mat-cell *matCellDef="let element" (click)="viewUser(element.id)">{{ element.firstname }}</td>
-  </ng-container>
-  <ng-container matColumnDef="lastname">
-    <th mat-header-cell *matHeaderCellDef>Lastname</th>
-    <td mat-cell *matCellDef="let element" (click)="viewUser(element.id)">{{ element.lastname }}</td>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
-    <td mat-cell *matCellDef="let element">
+<div class="user-cards" *ngIf="dataSource">
+  <mat-card *ngFor="let userData of dataSource" class="mat-elevation-z5">
+    <mat-card-title>{{userData.username}}</mat-card-title>
+    <mat-card-subtitle>{{userData.firstname + " "+userData.lastname}} </mat-card-subtitle>
 
-      <button mat-icon-button (click)="deleteUser(element.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
+    <mat-card-content>
+      <div class="user-image">
+        <img src="https://picsum.photos/200" [alt]="userData.username" />
+      </div>
+      <div class="user-detail">
+        <div class="user-detail-row">
+          <strong>Id : </strong>
+          <span> {{userData.id}} </span>
+        </div>
+        <div class="user-detail-row">
+          <strong>Username : </strong>
+          <span> {{userData.username}} </span>
+        </div>
+        <div class="user-detail-row">
+          <strong>Firstname : </strong>
+          <span> {{userData.firstname}} </span>
+        </div>
+        <div class="user-detail-row">
+          <strong>Lastname : </strong>
+          <span> {{userData.lastname}} </span>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="viewUser(userData.id)"> View </button>
+      <button mat-stroked-button color="primary" (click)="editUser(userData.id)"> Edit </button>
+      <button mat-stroked-button color="warn" (click)="deleteUser(userData.id)"> Delete </button>
+    </mat-card-actions>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-</div>  
+  </mat-card>
+</div>

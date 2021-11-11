@@ -2,40 +2,86 @@ mat-card {
   margin: 20px;
 }
 
-mat-card-content {
+mat-card-title {
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
 }
 
-img {
-  border: 2px solid #8888;
+mat-card-content {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.profile-detail {
+  flex: 4;
+  [type="submit"] {
+    width: 100%;
+  }
+}
+
+.profile-image {
+  flex: 1;
   overflow: hidden;
+
+  min-width: 200px;
+  text-align: center;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  img {
+    width: 200px;
+    aspect-ratio: 1/1;
+  }
 }
 
-.profile-detail {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.profile-detail-label {
+.profile-detail-row {
+  margin-block: 0.25em;
+  font-size: 1rem;
   display: grid;
-  gap: 10px;
-  grid-template-columns: 100px auto;
-
+  grid-template-columns: 80px 5px 1fr;
+  label {
+    min-width: 80px;
+    line-height: 40px;
+    padding-inline: 4px;
+  }
   span {
     font-weight: 500;
-    font-size: larger;
+    line-height: 40px;
+    // margin-right: 10px;
   }
 
-  span::before {
-    content: ":";
-    margin-right: 50px;
+  input {
+    max-height: 30px;
+    font-weight: 500;
+    flex: 1;
+    background: #fff;
+    border: 1px solid #8885;
+    padding-inline: 10px;
+    outline: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+  }
+
+  input.error {
+    border-color: red !important;
+  }
+
+  input:disabled {
+    border-color: transparent;
+  }
+  input:focus {
+    border-color: #888;
+  }
+  div {
+    font-size: smaller;
+    grid-area: 2/3/3/4;
+    padding: 0 8px;
+    background: #f003;
   }
 }
