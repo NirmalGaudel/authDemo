@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+//   justify-content: space-between;
+  padding: 20px;
+  gap: 30px;
+}
+mat-card {
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #0002;
+    mat-icon {
+      opacity: 100%;
+      color: rgb(53, 146, 223);
+    }
+  }
+  mat-icon {
+    opacity: 70%;
+    font-size: 100px;
+    transform: translateX(-150%);
+    -webkit-transform: translateX(-150%);
+    -moz-transform: translateX(-150%);
+    -ms-transform: translateX(-150%);
+    -o-transform: translateX(-150%);
+    transition: color 0.2s ease;
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
+    -ms-transition: color 0.2s ease;
+    -o-transition: color 0.2s ease;
+}
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}

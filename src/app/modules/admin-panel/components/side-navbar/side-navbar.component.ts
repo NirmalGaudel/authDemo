@@ -4,17 +4,20 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-side-navbar',
   templateUrl: './side-navbar.component.html',
-  styleUrls: ['./side-navbar.component.scss']
+  styleUrls: ['./side-navbar.component.scss'],
 })
 export class SideNavbarComponent implements OnInit {
+  constructor(private _authService: AuthService) {}
 
-  constructor(private _authService:AuthService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  logOut(){
+  logOut() {
     this._authService.logout();
   }
-
+  get isAdmin() {
+    return (
+      localStorage.getItem('id') === '1' ||
+      localStorage.getItem('role') === 'admin'
+    );
+  }
 }

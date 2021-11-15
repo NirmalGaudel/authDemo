@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title-group>
     <mat-card-title> Profile </mat-card-title>
-    <div class="title-actions" *ngIf="showEdit">
+    <div class="title-actions" *ngIf="showEditButton">
       <button
         mat-flat-button
         [color]="isEditable ? 'warn' : 'primary'"
@@ -132,10 +132,13 @@
           </div>
         </div>
         <button
+        *ngIf="isEditable"
           type="submit"
           mat-stroked-button
           color="primary"
           [disabled]="!isEditable"
+          
+
         >
           Submit
         </button>

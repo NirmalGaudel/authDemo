@@ -49,7 +49,7 @@ export class UsersTableComponent implements OnInit {
 
   viewUser(id: any) {
     console.log('View', id);
-    this._router.navigate(['/users/' + id]);
+    this._router.navigate(['maintenance/users/' + id]);
   }
 
   editUser(id: number) {

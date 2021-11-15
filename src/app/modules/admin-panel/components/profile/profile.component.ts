@@ -16,7 +16,7 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  showEdit = false;
+  showEditButton = false;
   userId!: number;
   userDetails: any;
   isEditable = false;
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.showEdit = localStorage.getItem('role') === 'admin';
+    this.showEditButton = localStorage.getItem('role') === 'admin';
     this.editForm = this._fb.group({
       id: new FormControl(''),
       username: new FormControl('', [
@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
       .then((data: any) => {
         this.userDetails = data;
         if (data.id === Number.parseInt(localStorage.getItem('id') || ''))
-          this.isEditable = true;
+          this.showEditButton = true;
         this.resetForm();
       })
       .catch((err) => {

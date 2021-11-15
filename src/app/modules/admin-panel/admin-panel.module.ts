@@ -13,9 +13,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumComponent } from './components/breadcrum/breadcrum.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EventsComponent } from './components/events/events.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
-  declarations: [AdminPanelComponent, DashboardComponent, HeaderComponent, SideNavbarComponent, UsersComponent, MaintenanceComponent, BreadcrumComponent, UsersTableComponent, ProfileComponent],
+  declarations: [
+    AdminPanelComponent,
+    DashboardComponent,
+    HeaderComponent,
+    SideNavbarComponent,
+    UsersComponent,
+    MaintenanceComponent,
+    BreadcrumComponent,
+    UsersTableComponent,
+    ProfileComponent,
+    EventsComponent,
+    CategoriesComponent,
+  ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
@@ -24,6 +38,6 @@ import { ProfileComponent } from './components/profile/profile.component';
     ReactiveFormsModule,
     RouterModule,
   ],
-  exports: [],
+  exports: [CategoriesComponent, EventsComponent],
 })
 export class AdminPanelModule {}

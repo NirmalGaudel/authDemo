@@ -11,6 +11,9 @@ import { UsersComponent } from './modules/admin-panel/components/users/users.com
 import { MaintenanceComponent } from './modules/admin-panel/components/maintenance/maintenance.component';
 import { ProfileComponent } from './modules/admin-panel/components/profile/profile.component';
 import { UsersTableComponent } from './modules/admin-panel/components/users-table/users-table.component';
+import { RoleGuard } from './guards/role.guard';
+import { EventsComponent } from './modules/admin-panel/components/events/events.component';
+import { CategoriesComponent } from './modules/admin-panel/components/categories/categories.component';
 
 const routes: Routes = [
   {
@@ -25,27 +28,45 @@ const routes: Routes = [
         data: { breadcrum: 'dashboard' },
         component: DashboardComponent,
       },
+
       {
-        path: 'users',
-        data: { breadcrum: 'users' },
-        component: UsersComponent,
+        path: 'maintenance',
+        data: { breadcrum: 'maintenance' },
+        canActivate: [RoleGuard],
         children: [
           {
             path: '',
             data: { breadcrum: '' },
-            component: UsersTableComponent,
+            component: MaintenanceComponent,
           },
           {
-            path: ':id',
-            component: ProfileComponent,
-            data: { breadcrum: '' },
+            path: 'events',
+            data: { breadcrum: 'events' },
+            component: EventsComponent,
+          },
+          {
+            path: 'categories',
+            data: { breadcrum: 'categories' },
+            component: CategoriesComponent,
+          },
+          {
+            path: 'users',
+            data: { breadcrum: 'users' },
+            component: UsersComponent,
+            children: [
+              {
+                path: '',
+                data: { breadcrum: '' },
+                component: UsersTableComponent,
+              },
+              {
+                path: ':id',
+                component: ProfileComponent,
+                data: { breadcrum: '' },
+              },
+            ],
           },
         ],
-      },
-      {
-        path: 'maintenance',
-        data: { breadcrum: 'maintenance' },
-        component: MaintenanceComponent,
       },
     ],
   },
