@@ -30,10 +30,11 @@ export class ProfileComponent implements OnInit {
   ) {
     this._route.paramMap.subscribe((data) => {
       const id = Number.parseInt(data.get('id') || '');
-      if (!id) {
-        this._alertService.alert('Invalid user');
-        this._router.navigate(['/users']);
-      } else this.userId = id;
+      // if (!id) {
+      //   this._alertService.alert('Invalid user');
+      //   this._router.navigate(['/users']);
+      // } else this.userId = id;
+      this.userId = id || Number.parseInt(localStorage.getItem('id') || '1');
     });
   }
 
@@ -46,16 +47,13 @@ export class ProfileComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(20),
       ]),
-      firstname: new FormControl('', [
+      fullname: new FormControl('', [
         Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
+        Validators.minLength(6),
+        Validators.maxLength(100),
       ]),
-      lastname: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
-      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      role: new FormControl('basic', [Validators.required]),
     });
     this.getUserInfo();
   }
@@ -78,32 +76,29 @@ export class ProfileComponent implements OnInit {
   resetForm() {
     this.editForm.reset(this.userDetails);
     this.editForm.disable();
-  }
-
-  get fullname() {
-    return `${this.userDetails.firstname} ${this.userDetails.lastname}`;
+    this.isEditable = false;
   }
 
   toggleEdit() {
-    if (this.isEditable) this.resetForm();
-    this.isEditable = !this.isEditable;
-    if (this.isEditable) {
+    if (this.isEditable) return this.resetForm();
+    else {
+      this.isEditable = true;
       this.editForm.enable();
       this.editForm.controls.id.disable();
-    } else this.editForm.disable();
+      this.editForm.controls.role.disable();
+    }
   }
 
   submitForm() {
     console.log(this.editForm);
     const data = this.editForm.value;
-    data.id = this.userId;
-    // if (!this.editForm.valid) return;
 
     this._http
-      .put('/users/', data)
+      .put('/users/' + this.userId, data)
       .toPromise()
       .then((data) => {
-        this.userDetails = data;
+        console.log(this.userDetails, data);
+        this.userDetails = { ...this.userDetails, ...data };
         this.resetForm();
         this._alertService.alert('Update Successful', 'okay');
       })

@@ -1,7 +1,7 @@
 <div class="user-cards" *ngIf="dataSource">
   <mat-card *ngFor="let userData of dataSource" class="mat-elevation-z5">
     <mat-card-title>{{userData.username}}</mat-card-title>
-    <mat-card-subtitle>{{userData.firstname + " "+userData.lastname}} </mat-card-subtitle>
+    <mat-card-subtitle>{{userData.fullname}} </mat-card-subtitle>
 
     <mat-card-content>
       <div class="user-image">
@@ -17,12 +17,12 @@
           <span> {{userData.username}} </span>
         </div>
         <div class="user-detail-row">
-          <strong>Firstname : </strong>
-          <span> {{userData.firstname}} </span>
+          <strong>FullName : </strong>
+          <span> {{userData.fullname}} </span>
         </div>
         <div class="user-detail-row">
-          <strong>Lastname : </strong>
-          <span> {{userData.lastname}} </span>
+          <strong>Email : </strong>
+          <span> {{userData.email}} </span>
         </div>
       </div>
     </mat-card-content>

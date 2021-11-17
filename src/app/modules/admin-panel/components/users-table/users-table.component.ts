@@ -32,8 +32,8 @@ export class UsersTableComponent implements OnInit {
       .get('/users')
       .toPromise()
       .then((data: any) => {
-        if (data.count) {
-          this.dataSource = data.rows;
+        if (data.length) {
+          this.dataSource = data;
         }
       })
       .catch((err) => {

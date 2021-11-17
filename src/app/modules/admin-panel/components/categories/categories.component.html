@@ -1,1 +1,23 @@
-<p>categories works!</p>
+<div class="category-header">
+  <form class="search-form" (ngSubmit)="filterSearch(searchInput.value)">
+    <input #searchInput type="text" placeholder="Search Categories" />
+    <button class="search-button">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+  <button mat-flat-button color="primary" (click)="addCategory()">
+    <mat-icon>add</mat-icon>Add Category
+  </button>
+</div>
+
+<div class="category-card-container">
+  <mat-card *ngFor="let category of displayCategories" class="mat-elevation-z5">
+    <mat-card-title>{{ category.title }}</mat-card-title>
+    <mat-card-content>{{ category.description }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary">View</button>
+      <button mat-stroked-button color="warn">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="!displayCategories.length"> No Items </mat-card>
+</div>

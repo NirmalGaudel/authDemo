@@ -36,6 +36,18 @@
   mat-card {
     display: flex;
     flex-direction: column;
+    mat-card-title{
+      transition: color 0.3s ease;
+      -webkit-transition: color 0.3s ease;
+      -moz-transition: color 0.3s ease;
+      -ms-transition: color 0.3s ease;
+      -o-transition: color 0.3s ease;
+}
+    &:hover{
+      mat-card-title{
+        color: #673ab7;
+      }
+    }
   }
 
   mat-card-content {

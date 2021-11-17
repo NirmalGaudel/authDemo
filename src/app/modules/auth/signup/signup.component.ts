@@ -31,16 +31,12 @@ export class SignupComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(20),
       ]),
-      firstname: new FormControl('', [
+      fullname: new FormControl('', [
         Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
+        Validators.minLength(6),
+        Validators.maxLength(100),
       ]),
-      lastname: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
-      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -55,11 +51,18 @@ export class SignupComponent implements OnInit {
     this._authService
       .signup(this.signupFormGroup.value)
       .then((_) => {
-        this._alertService.alert("Account Created Successfully","okay");
-        this._route.navigate([''])
-      }).catch(err=>{
-        if(err?.errors?.username) this._alertService.alert(err.errors.username?.msg);
-        else this._alertService.alert(err?.message || JSON.stringify(err),"Okay");
+        this._alertService.alert('Account Created Successfully', 'okay');
+        this._route.navigate(['']);
+      })
+      .catch((err) => {
+        if (err?.errors) {
+          const messages: string[] = [];
+          Object.values(err.errors).forEach((e: any) =>
+            messages.push(e.msg || '')
+          );
+          this._alertService.alert(messages);
+        } else
+          this._alertService.alert(err?.message || JSON.stringify(err), 'Okay');
       });
   }
 }

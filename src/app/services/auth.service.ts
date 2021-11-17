@@ -32,19 +32,18 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    // TODO : return HttpResponse
     return new Promise((resolve, reject) => {
       this._http
         .post('/auth/login', { username, password })
         .toPromise()
         .then((res: any) => {
-          
           localStorage.clear();
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user.id);
           localStorage.setItem('username', res.user.username);
-          localStorage.setItem('firstname', res.user.firstname);
-          localStorage.setItem('lastname', res.user.lastname);
+          localStorage.setItem('fullname', res.user.fullname);
+          localStorage.setItem('email', res.user.email);
+          localStorage.setItem('role', res.user.role);
           resolve(res);
         })
         .catch((err) => reject(err));
@@ -66,19 +65,19 @@ export class AuthService {
 
   signup(payload: any) {
     return new Promise((resolve, reject) => {
-      const { username, firstname, lastname, password } = payload;
-      const body = { username, firstname, lastname, password };
+      const { username, fullname, email, password } = payload;
+      const body = { username, fullname, email, password };
       this._http
         .post('/auth/signup', body)
         .toPromise()
         .then((res: any) => {
-          console.log(res);
           localStorage.clear();
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user.id);
           localStorage.setItem('username', res.user.username);
-          localStorage.setItem('firstname', res.user.firstname);
-          localStorage.setItem('lastname', res.user.lastname);
+          localStorage.setItem('fullname', res.user.fullname);
+          localStorage.setItem('email', res.user.email);
+          localStorage.setItem('role', res.user.role);
           resolve(res);
         })
         .catch((err) => {

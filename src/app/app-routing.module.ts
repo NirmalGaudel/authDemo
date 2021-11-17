@@ -30,6 +30,12 @@ const routes: Routes = [
       },
 
       {
+        path: 'profile',
+        data: { breadcrum: 'profile' },
+        component: ProfileComponent,
+      },
+
+      {
         path: 'maintenance',
         data: { breadcrum: 'maintenance' },
         canActivate: [RoleGuard],

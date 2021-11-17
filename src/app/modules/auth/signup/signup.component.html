@@ -12,94 +12,56 @@
           formControlName="username"
           [errorStateMatcher]="matcher"
         />
-        <mat-error
-          *ngIf="
-            signupFormGroup.controls.username.hasError('minLength') &&
-            !signupFormGroup.controls.username.hasError('required')
-          "
-        >
-          The Username is invalid
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.username.hasError('required')"
-        >
-          Username is <strong>required</strong>
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.username.hasError('minlength')"
-        >
-          Username must have <strong> 2 </strong> Characters
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.username.hasError('maxlength')"
-        >
-          Username must have less than <strong> 20 </strong> Characters
+        <mat-error>
+          <ng-container *ngIf="signupFormGroup.controls.username.hasError('required')">
+            username is <strong>required</strong>
+          </ng-container>
+          <ng-container *ngIf="signupFormGroup.controls.username.hasError('minlength')">
+            username requires <strong>2</strong> characters
+          </ng-container>
+          <ng-container *ngIf="signupFormGroup.controls.username.hasError('maxlength')">
+            username requires less than <strong>20</strong> characters
+          </ng-container>
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>FirstName</mat-label>
+        <mat-label>Fullname</mat-label>
         <input
           matInput
           type="text"
-          placeholder="Enter Firstname"
-          formControlName="firstname"
+          placeholder="Enter Fullname"
+          formControlName="fullname"
           [errorStateMatcher]="matcher"
         />
-        <mat-error
-          *ngIf="
-            signupFormGroup.controls.firstname.hasError('minLength') &&
-            !signupFormGroup.controls.firstname.hasError('required')
-          "
-        >
-          The Firstname is invalid
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.firstname.hasError('required')"
-        >
-          Firstname is <strong>required</strong>
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.firstname.hasError('minlength')"
-        >
-          Firstname must have <strong> 2 </strong> Characters
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.firstname.hasError('maxlength')"
-        >
-          Firstname must have less than <strong> 20 </strong> Characters
+        <mat-error>
+          <ng-container *ngIf="signupFormGroup.controls.fullname.hasError('required')">
+            fullname is <strong>required</strong>
+          </ng-container>
+          <ng-container *ngIf="signupFormGroup.controls.fullname.hasError('minlength')">
+            fullname requires <strong>6</strong> characters
+          </ng-container>
+          <ng-container *ngIf="signupFormGroup.controls.fullname.hasError('maxlength')">
+            fullname requires less than <strong>100</strong> characters
+          </ng-container>
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Lastname</mat-label>
+        <mat-label>Email</mat-label>
         <input
           matInput
-          type="text"
-          placeholder="Enter LastName"
-          formControlName="lastname"
+          type="email"
+          placeholder="Enter Email"
+          formControlName="email"
           [errorStateMatcher]="matcher"
         />
-        <mat-error
-          *ngIf="
-            signupFormGroup.controls.lastname.hasError('minLength') &&
-            !signupFormGroup.controls.lastname.hasError('required')
-          "
-        >
-          The Lastname is invalid
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.lastname.hasError('required')"
-        >
-          Lastname is <strong>required</strong>
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.lastname.hasError('minlength')"
-        >
-          Lastname must have <strong> 2 </strong> Characters
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.lastname.hasError('maxlength')"
-        >
-          Lastname must have less than <strong> 20 </strong> Characters
+        <mat-error>
+          <ng-container *ngIf="signupFormGroup.controls.email.hasError('required')">
+            email is <strong>required</strong>
+          </ng-container>
+          <ng-container *ngIf="signupFormGroup.controls.email.hasError('email')">
+            email is not valid
+          </ng-container>
+          
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -119,20 +81,11 @@
         >
           The Password is invalid
         </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.password.hasError('required')"
-        >
-          Password is <strong>required</strong>
+        <mat-error *ngIf="signupFormGroup.controls.password.hasError('required')">
+          password is <strong>required</strong>
         </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.password.hasError('minlength')"
-        >
-          Password must have <strong> 8 </strong> Characters
-        </mat-error>
-        <mat-error
-          *ngIf="signupFormGroup.controls.password.hasError('maxlength')"
-        >
-          Password must have less than <strong> 20 </strong> Characters
+        <mat-error *ngIf="signupFormGroup.controls.password.hasError('minlength')">
+          password must have <strong> 8 </strong> Characters
         </mat-error>
         <mat-error
           *ngIf="
@@ -140,7 +93,7 @@
             !signupFormGroup.controls.password.hasError('minlength')
           "
         >
-          Password must have each of lowercase, uppercase and number
+          password must have each of lowercase, uppercase and number
         </mat-error>
       </mat-form-field>
     </form>

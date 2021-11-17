@@ -1,0 +1,45 @@
+<div class="add-category-dialog-header">
+  <span>Enter Category Details</span>
+  <button mat-icon-button (click)="closeDialog()"><mat-icon>close</mat-icon></button>
+</div>
+
+<form [formGroup]="addCatForm" (ngSubmit)="submitForm()">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title"/>
+    <mat-error *ngIf="addCatForm.controls.title.errors?.required">
+      title is required
+    </mat-error>
+
+    <mat-error *ngIf="addCatForm.controls.title.errors?.minlength">
+      title requires
+      {{ addCatForm.controls.title.errors?.minlength?.requiredLength }}
+      characters
+    </mat-error>
+    <mat-error *ngIf="addCatForm.controls.title.errors?.maxlength">
+      title max out at
+      {{ addCatForm.controls.title.errors?.maxlength?.requiredLength }}
+      characters
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="description" />
+    <mat-error *ngIf="addCatForm.controls.description.errors?.required">
+      description is required
+    </mat-error>
+
+    <mat-error *ngIf="addCatForm.controls.description.errors?.minlength">
+      description requires
+      {{ addCatForm.controls.description.errors?.minlength?.requiredLength }}
+      characters
+    </mat-error>
+    <mat-error *ngIf="addCatForm.controls.description.errors?.maxlength">
+      description max out at
+      {{ addCatForm.controls.description.errors?.maxlength?.requiredLength }}
+      characters
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary">Submit</button>
+</form>

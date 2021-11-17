@@ -20,9 +20,8 @@ export class DashboardComponent implements OnInit {
     this.user = {
       id: Number.parseInt(localStorage.getItem('id') || ''),
       username: localStorage.getItem('username') || '',
-      firstname: localStorage.getItem('firstname') || '',
-      lastname: localStorage.getItem('lastname') || '',
-      password: localStorage.getItem('password') || '',
+      fullname: localStorage.getItem('fullname') || '',
+      email: localStorage.getItem('email') || '',
     };
     if(!this.user.id) {
       localStorage.clear();

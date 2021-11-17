@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 10px;
+  width: 30vw;
+  min-width: 200px;
+}
+.add-category-dialog-header{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}

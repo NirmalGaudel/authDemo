@@ -18,7 +18,7 @@
   </mat-card-title-group>
 
   <ng-container *ngIf="userDetails">
-    <mat-card-subtitle>{{ fullname }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ userDetails.fullname }}</mat-card-subtitle>
 
     <mat-card-content>
       <div class="profile-image">
@@ -72,73 +72,58 @@
           </div>
         </div>
         <div class="profile-detail-row">
-          <label for="profile-detail-firstname">Firstname</label>
+          <label for="profile-detail-fullname">Fullname</label>
           <span>:</span>
           <input
             type="text"
-            id="profile-detail-firstname"
-            formControlName="firstname"
+            id="profile-detail-fullname"
+            formControlName="fullname"
           />
-          <div *ngIf="editForm.controls.firstname.invalid">
+          <div *ngIf="editForm.controls.fullname.invalid">
             <ng-container
-              *ngIf="editForm.controls.firstname.hasError('required')"
+              *ngIf="editForm.controls.fullname.hasError('required')"
             >
-              firstname is required
+              fullname is required
             </ng-container>
             <ng-container
-              *ngIf="editForm.controls.firstname.hasError('minlength')"
+              *ngIf="editForm.controls.fullname.hasError('minlength')"
             >
               at least
-              {{ editForm.controls.firstname.errors?.minlength?.requiredLength }}
+              {{ editForm.controls.fullname.errors?.minlength?.requiredLength }}
               characters required
             </ng-container>
             <ng-container
-              *ngIf="editForm.controls.firstname.hasError('maxlength')"
+              *ngIf="editForm.controls.fullname.hasError('maxlength')"
             >
               maximum of
-              {{ editForm.controls.firstname.errors?.maxlength?.requiredLength }}
+              {{ editForm.controls.fullname.errors?.maxlength?.requiredLength }}
               characters supported
             </ng-container>
           </div>
         </div>
         <div class="profile-detail-row">
-          <label for="profile-detail-lastname">Lastname</label>
+          <label for="profile-detail-email">Lastname</label>
           <span>:</span>
           <input
             type="text"
-            id="profile-detail-lastname"
-            formControlName="lastname"
+            id="profile-detail-email"
+            formControlName="email"
           />
-          <div *ngIf="editForm.controls.lastname.invalid">
-            <ng-container
-              *ngIf="editForm.controls.lastname.hasError('required')"
-            >
-              lastname is required
+          <div *ngIf="editForm.controls.email.invalid">
+            <ng-container *ngIf="editForm.controls.email.hasError('required')">
+              email is required
             </ng-container>
-            <ng-container
-              *ngIf="editForm.controls.lastname.hasError('minlength')"
-            >
-              at least
-              {{ editForm.controls.lastname.errors?.minlength?.requiredLength }}
-              characters required
-            </ng-container>
-            <ng-container
-              *ngIf="editForm.controls.lastname.hasError('maxlength')"
-            >
-              maximum of
-              {{ editForm.controls.lastname.errors?.maxlength?.requiredLength }}
-              characters supported
+            <ng-container *ngIf="editForm.controls.email.hasError('email')">
+              email is not valid
             </ng-container>
           </div>
         </div>
         <button
-        *ngIf="isEditable"
+          *ngIf="isEditable"
           type="submit"
           mat-stroked-button
           color="primary"
           [disabled]="!isEditable"
-          
-
         >
           Submit
         </button>

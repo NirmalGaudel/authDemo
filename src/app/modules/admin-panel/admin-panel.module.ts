@@ -15,6 +15,8 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { EventsComponent } from './components/events/events.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
     ProfileComponent,
     EventsComponent,
     CategoriesComponent,
+    AddCategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,10 @@ import { CategoriesComponent } from './components/categories/categories.componen
     ReactiveFormsModule,
     RouterModule,
   ],
-  exports: [CategoriesComponent, EventsComponent],
+  exports: [],
 })
-export class AdminPanelModule {}
+export class AdminPanelModule {
+  constructor(private iconReg: MatIconRegistry) {
+    iconReg.setDefaultFontSetClass('material-icons-outlined');
+  }
+}

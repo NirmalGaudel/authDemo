@@ -20,8 +20,4 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this._authService.logout();
   }
-
-  avatarClicked() {
-    this.router.navigate(['users/' + localStorage.getItem('id')]);
-  }
 }
